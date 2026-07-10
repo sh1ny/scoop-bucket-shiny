@@ -1,12 +1,12 @@
 {
-    "version": "1.7.1-godot-4.6.3",
+    "version": "1.8.0-godot-4.7",
     "description": "Godot editor build bundled with LimboAI behavior trees and state machines.",
     "homepage": "https://github.com/limbonaut/limboai",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/limbonaut/limboai/releases/download/v1.7.1/limboai+v1.7.1.godot-4.6.3.editor.windows.x86_64.zip",
-            "hash": "348bf27f333a54c69e7e0c7bb6f1d3ed016546b6d16b7fb68a0b72840f40b3b5"
+            "url": "https://github.com/limbonaut/limboai/releases/download/v1.8.0/limboai+v1.8.0.godot-4.7.editor.windows.x86_64.zip",
+            "hash": "1f2a0069b9b042d0aba135a829c84e5030d151b8cd4986773bf45f3f72f414ae"
         }
     },
     "pre_install": [

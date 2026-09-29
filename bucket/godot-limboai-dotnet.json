@@ -1,0 +1,57 @@
+{
+    "version": "1.8.1-godot-4.7.2",
+    "description": "Godot .NET editor bundled with LimboAI behavior trees and state machines.",
+    "homepage": "https://github.com/limbonaut/limboai",
+    "license": "MIT",
+    "suggest": {
+        ".NET SDK (for building C# projects)": [
+            "dotnet-sdk",
+            "versions/dotnet-sdk-lts",
+            "versions/dotnet8-sdk",
+            "versions/dotnet9-sdk",
+            "versions/dotnet10-sdk"
+        ]
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/limbonaut/limboai/releases/download/v1.8.1/limboai+v1.8.1.godot-4.7.2.dotnet.editor.windows.x86_64.zip",
+            "hash": "701e77f041f9a18c5f0d6a07b4c4ae29842a47195ce07dc38a8059d3ca65f8dc"
+        }
+    },
+    "pre_install": [
+        "Get-Item \"$dir\\godot.windows.editor.x86_64.mono.console.exe\" | Rename-Item -NewName 'godot-limboai-dotnet.console.exe'",
+        "Get-Item \"$dir\\godot.windows.editor.x86_64.mono.exe\" | Rename-Item -NewName 'godot-limboai-dotnet.exe'",
+        "New-Item -Force -Path \"$dir\" -Name '._sc_' -ItemType File | Out-Null"
+    ],
+    "bin": [
+        [
+            "godot-limboai-dotnet.console.exe",
+            "godot-limboai-dotnet"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "godot-limboai-dotnet.exe",
+            "Godot LimboAI .NET"
+        ]
+    ],
+    "persist": "editor_data",
+    "checkver": {
+        "url": "https://api.github.com/repos/limbonaut/limboai/releases/latest",
+        "jsonpath": "$.assets[*].name",
+        "regex": "limboai\\+v(?<limbo>[\\d.]+)\\.godot-(?<godot>[\\d.]+)\\.dotnet\\.editor\\.windows\\.x86_64\\.zip",
+        "replace": "${limbo}-godot-${godot}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/limbonaut/limboai/releases/download/v$matchLimbo/limboai+v$matchLimbo.godot-$matchGodot.dotnet.editor.windows.x86_64.zip"
+            }
+        },
+        "hash": {
+            "mode": "json",
+            "url": "https://api.github.com/repos/limbonaut/limboai/releases/tags/v$matchLimbo",
+            "jsonpath": "$.assets[?(@.name == 'limboai+v$matchLimbo.godot-$matchGodot.dotnet.editor.windows.x86_64.zip')].digest"
+        }
+    }
+}
